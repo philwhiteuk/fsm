@@ -46,11 +46,14 @@ Acceptance tests are included in the test file. Do not modify these. When all th
 
 ## setup
 
+You will need node v4 installed.
+
 Clone this repository.
 
 Go into the fsm/ folder and run:
 
 ```bash
+nvm use
 npm install
 ```
 
