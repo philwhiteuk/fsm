@@ -35,23 +35,27 @@ We end in q3, which is not our accept state, so return false.
 
 The input of ["1", "0", "0", "1", "0"] would cause us to return false, as we would end in q3.
 
-I have started you off with the bare bones of the Automaton object.
+I have started you off with the bare bones of the Automaton class, as seen in ./src/Automaton. The task
+is to complete the implementation.
 
-```javascript
-class Automaton()
-{
-  constructor () {
-    this.states = [];
-  }
-  
-  readCommands(commands) {
-    // Implement this
-    // Return true if we end in our accept state, false otherwise.
-  }
-}
-var myAutomaton = new Automaton();
-```
-
-You will have to design your state objects, and how your Automaton handles transitions.
+You will have to define how the Automaton stores it's state, and transitions between states based on the commands passed to readCommands.
 
 As an aside, the automaton accepts an array of strings, rather than just numbers, or a number represented as a string, because the language an automaton can accept isn't confined to just numbers. An automaton should be able to accept any 'symbol.'
+
+Acceptance tests are included in the test file. Do not modify these. When all these tests pass this means your implementation is correct.
+
+## setup
+
+Clone this repository.
+
+Go into the fsm/ folder and run:
+
+```bash
+npm install
+```
+
+To run the tests do:
+
+```bash
+npm run test
+```
