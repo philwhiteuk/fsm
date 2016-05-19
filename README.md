@@ -40,7 +40,7 @@ is to complete the implementation.
 
 You will have to define how the Automaton stores it's state, and transitions between states based on the commands passed to readCommands.
 
-As an aside, the automaton accepts an array of strings, rather than just numbers, or a number represented as a string, because the language an automaton can accept isn't confined to just numbers. An automaton should be able to accept any 'symbol.'
+As an aside, the automaton accepts an array of strings, rather than just numbers, or a number represented as a string, you may assume you will only be passed valid inputs.
 
 Acceptance tests are included in the test file. Do not modify these. When all these tests pass this means your implementation is correct.
 
