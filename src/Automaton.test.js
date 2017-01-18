@@ -1,4 +1,4 @@
-import Automaton from '../src/Automaton';
+import Automaton from './Automaton';
 import { assert } from 'chai';
 
 describe('Automaton', () => {
