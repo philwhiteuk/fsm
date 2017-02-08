@@ -34,6 +34,8 @@ We make these transitions based on the input of ["1", "0", "0", "1", "0"],
 
 We end in `q3`, which is not our "accept" state, so we return `false`.
 
+The input of ["1", "0", "0", "1", "0"] would cause us to return `false`, as we would end in `q3`.
+
 You start with the bare bones of the Automaton class, as seen in ./src/Automaton. The task
 is to complete the implementation.
 
