@@ -1,12 +1,41 @@
-export default class Automaton {
-  constructor() {
-    // Implement this
-    // Do any setup you think you need for the Automaton to work
+import { createStore } from 'redux'
+
+function fsm(state, action) {
+  if(state === undefined) {
+    return 'q1';
+  }
+  
+  if (action.type === 'RUN_COMMAND') {
+    if(action.command === '0') {
+      switch (state) {
+        case 'q1':
+          return 'q1';
+          break;
+        case 'q2':
+          return 'q3';
+          break;
+        default:
+          return 'q2';
+      }
+    } else {
+      return 'q2';
+    }
   }
 
-  readCommands(commands) {
-    // Implement this
-    // Read in commands ([string])
-    // Return true if we end in our accept state, false otherwise.
+  return state;
+}
+
+export default class Automaton {
+  constructor(initialState = undefined) {
+    this.store = createStore(fsm, initialState);
+  }
+
+  readCommands(commands = []) {
+    commands.forEach(command => this.store.dispatch({ type: 'RUN_COMMAND', command }));
+    return this.state === 'q2';
+  }
+
+  get state () {
+    return this.store.getState();
   }
 }
