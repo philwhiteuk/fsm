@@ -1,41 +1,19 @@
-import { createStore } from 'redux'
-
-function fsm(state, action) {
-  if(state === undefined) {
-    return 'q1';
-  }
-  
-  if (action.type === 'RUN_COMMAND') {
-    if(action.command === '0') {
-      switch (state) {
-        case 'q1':
-          return 'q1';
-          break;
-        case 'q2':
-          return 'q3';
-          break;
-        default:
-          return 'q2';
-      }
-    } else {
-      return 'q2';
-    }
-  }
-
-  return state;
-}
 
 export default class Automaton {
-  constructor(initialState = undefined) {
-    this.store = createStore(fsm, initialState);
+  constructor(initialState = 'q1') {
+    this.state = initialState;
   }
 
   readCommands(commands = []) {
-    commands.forEach(command => this.store.dispatch({ type: 'RUN_COMMAND', command }));
+    commands.forEach(command => { this.newState = command });
     return this.state === 'q2';
   }
 
-  get state () {
-    return this.store.getState();
+  set newState (command) {
+    if(command === '1' || this.state === 'q3') {
+      this.state = 'q2';
+    } else {
+      this.state = this.state === 'q1' ? 'q1' : 'q3';
+    }
   }
 }
