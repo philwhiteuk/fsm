@@ -9,7 +9,7 @@ describe('Automaton', () => {
   });
   describe('ready state', () => {
     it('should return true when state is q1 and command is 1', () => {
-      const automaton = new Automaton('q1');
+      const automaton = new Automaton();
       const result = automaton.readCommands(['1']);
       expect(automaton.state).toBe('q2');
       expect(result).toBe(true);

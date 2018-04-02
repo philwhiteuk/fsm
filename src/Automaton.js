@@ -1,19 +1,19 @@
 
+function reducer(state, command) {
+  if(state === 'q3' || command === '1') {
+    return 'q2';
+  } else {
+    return state === 'q1' ? 'q1' : 'q3';
+  }
+}
+
 export default class Automaton {
   constructor(initialState = 'q1') {
     this.state = initialState;
   }
 
   readCommands(commands = []) {
-    commands.forEach(command => { this.newState = command });
+    this.state = commands.reduce(reducer, this.state);
     return this.state === 'q2';
-  }
-
-  set newState (command) {
-    if(command === '1' || this.state === 'q3') {
-      this.state = 'q2';
-    } else {
-      this.state = this.state === 'q1' ? 'q1' : 'q3';
-    }
   }
 }
